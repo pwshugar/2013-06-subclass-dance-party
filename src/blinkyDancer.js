@@ -1,3 +1,4 @@
+/*
 var makeBlinkyDancer = function(top, left, timeBetweenSteps){
   var blinkyDancer = makeDancer(top, left, timeBetweenSteps);
 
@@ -9,30 +10,17 @@ var makeBlinkyDancer = function(top, left, timeBetweenSteps){
     // call the old version of step at the beginning of any call to this new version of step
     oldStep();
 
-    /* toggle() is a jQuery method to show/hide the <span> tag.
-     * See http://api.jquery.com/category/effects/ for this and
-     * other effects you can use on a jQuery-wrapped html tag. */
+      // toggle() is a jQuery method to show/hide the <span> tag.
+      // See http://api.jquery.com/category/effects/ for this and
+      // other effects you can use on a jQuery-wrapped html tag. 
     blinkyDancer.$node.toggle();
   };
 
   return blinkyDancer;
 };
 
-// Our stuff below
-
-var BlinkyDancer = function(top, left, timeBetweenSteps){
-  this.prototype = inherit(Dancer.prototype);
-  var oldStep = this.step;
-};
-
-BlinkyDancer.prototype.step = function() {
-  // call the old version of step at the beginning of any call to this new version of step
-  oldStep();
-
-  /* toggle() is a jQuery method to show/hide the <span> tag.
-   * See http://api.jquery.com/category/effects/ for this and
-   * other effects you can use on a jQuery-wrapped html tag. */
-  this.$node.toggle();
+makeBlinkyDancer = function(top, left, step){
+  return new BlinkyDancer(top, left, step);
 };
 
 var inherit = function(proto) {
@@ -40,3 +28,44 @@ var inherit = function(proto) {
   F.prototype = proto;
   return new F;
 };
+
+BlinkyDancer.prototype = inherit(Dancer.prototype);
+// Our stuff below
+*/
+
+
+var BlinkyDancer = function(top, left, timeBetweenSteps){
+  Dancer.call(this, top, left, timeBetweenSteps);
+  var oldStep = this.step;
+};
+
+BlinkyDancer.prototype = new Dancer();
+BlinkyDancer.prototype.constructor = BlinkyDancer;
+
+BlinkyDancer.prototype.step = function() {
+  // call the old version of step at the beginning of any call to this new version of step
+  oldStep();
+  /* toggle() is a jQuery method to show/hide the <span> tag.
+   * See http://api.jquery.com/category/effects/ for this and
+   * other effects you can use on a jQuery-wrapped html tag. */
+  this.$node.toggle();
+};
+
+
+
+// var ParentClass = function(){
+//   console.log('who am i? ', this);
+// }
+
+// ParentClass.prototype.foo = function(){
+//   console.log('this is the parent class functin foo');
+// }
+
+// ChildClass = function(){
+//   ParentClass.call(this);
+// }
+// ChildClass.prototype = Object.create(ParentClass.prototype);
+
+// var child = new ChildClass()
+// child instanceof ChildClass // true
+// child instanceof ParentClass // true
