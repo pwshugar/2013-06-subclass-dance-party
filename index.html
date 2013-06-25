@@ -8,12 +8,14 @@
     <script src="src/dancer.js"></script>
     <script src="src/blinkyDancer.js"></script>
     <script src="src/Dancer1.js"></script>
+    <script src="src/MarioDancer.js"></script>
   </head>
   <body>
 
     <div class="topbar">
       <span class="title">object dance party</span>
       <a href="#" class="lineUpButton" data-dancer-maker-function-name="lineUp">Line Up!</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="MarioDancer">add a MarioDancer</a>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="Dancer1">add a RainbowTwistDancer</a>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="BlinkyDancer">add a BlinkyDancer</a>
     </div>
@@ -53,8 +55,15 @@
         $(".lineUpButton").on("click", function(){
           lineUp(window.dancers);
         });
+
+        $("body").delegate("img", "mouseover", function(){
+          var randomDirection = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+
+
+          var left = parseInt(this.style['left']);
+          this.style['left'] = left + 100 + 'px';
+        });
       });
     </script>
-
   </body>
 </html>

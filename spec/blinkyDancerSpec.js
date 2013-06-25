@@ -6,7 +6,9 @@ describe("blinkyDancer", function() {
     // sets up a way to delay this test -- used below
     jasmine.Clock.useMock();
 
-    blinkyDancer = makeBlinkyDancer(10, 20, timeBetweenSteps);
+    // blinkyDancer = makeBlinkyDancer(10, 20, timeBetweenSteps);
+    blinkyDancer = new BlinkyDancer(10, 20, timeBetweenSteps);
+    window.dancers = [];
   });
 
   it("should have a jQuery $node object", function(){
@@ -38,4 +40,10 @@ describe("blinkyDancer", function() {
 
   });
 */
+  it("should line up the dancers when clicking 'Line Up!", function() {
+    blinkyDancer.step(timeBetweenSteps);
+    dancers.push(blinkyDancer);
+    lineUp(window.dancers);
+    expect(dancers[0].$node[0].style['left']).toEqual('10px');
+  });
 });
