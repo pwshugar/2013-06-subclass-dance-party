@@ -4,6 +4,11 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
+  background-image: url(img/background.jpg);
+  background-size: cover;
+  /*background-size: cover;
+  background-repeat: no-repeat;*/
+  /*font: 18px 'Helvetica Neue', Helvetica;*/
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -29,4 +34,7 @@ body, a:link, a:visited, a:active{
   border:35px solid blue;
   border-radius:0px;
   position:absolute;
+}
+#mario {
+  cursor: hand;
 }

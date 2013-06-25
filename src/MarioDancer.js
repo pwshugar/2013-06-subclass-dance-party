@@ -16,25 +16,21 @@ MarioDancer.prototype.constructor = MarioDancer;
 MarioDancer.prototype.step = function(timeBetweenSteps) {
   // call the old version of step at the beginning of any call to this new version of step
   Dancer.prototype.step.call(this, timeBetweenSteps);
-   // toggle() is a jQuery method to show/hide the <span> tag.
-   // * See http://api.jquery.com/category/effects/ for this and
-   // * other effects you can use on a jQuery-wrapped html tag. 
-  // this.$node.toggle();
-
-  // if (this.$node.css("border-color") === "rgb(0, 0, 255)") {
-  //   this.$node.css("border-color", "green");
-  // } else {
-  //   this.$node.css("border-color", "blue");
-  // }
-  // var randomColor1 = Math.floor(Math.random() * 160);
-  // var randomColor2 = Math.floor(Math.random() * 255);
-  // var randomColor3 = Math.floor(Math.random() * 255);
-  // var randomColor4 = Math.floor(Math.random() * 180);
-  // this.$node.css("border-color", "rgb(" + randomColor1 + ", " + randomColor2 + ", " + randomColor3 + ")");
-  // this.$node.css("-webkit-transform", "rotate(" + randomColor4 + "deg)");
+  var oldHeight = parseInt(this.$node.css("height")) || 0;
   var width = Math.floor(Math.random() * (120 - 60 + 1)) + 60;
   var percent = width / 120;
   var height = Math.floor(160 * percent);
+  var difHeight = 0;
+  var tempTop = parseInt(this.$node.css('top'));
+  // console.log("oldHeight: " + oldHeight);
+  // console.log("new height: " + height);
+  if (height > oldHeight){
+    difHeight = height - oldHeight;
+    this.$node.css('top', tempTop - difHeight + 'px');
+  } else {
+    difHeight = oldHeight - height;
+    this.$node.css('top', tempTop + difHeight + 'px');
+  }
 
   this.$node.css("width", width);
   this.$node.css("height", height);
