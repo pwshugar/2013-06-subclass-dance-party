@@ -64,7 +64,9 @@ Dancer1.prototype.step = function(timeBetweenSteps) {
   var randomColor1 = Math.floor(Math.random() * 255);
   var randomColor2 = Math.floor(Math.random() * 255);
   var randomColor3 = Math.floor(Math.random() * 255);
+  var randomColor4 = Math.floor(Math.random() * 180);
   this.$node.css("border-color", "rgb(" + randomColor1 + ", " + randomColor2 + ", " + randomColor3 + ")");
+  this.$node.css("-webkit-transform", "rotate(" + randomColor4 + "deg)");
 };
 
 

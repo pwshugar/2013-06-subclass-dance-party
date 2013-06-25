@@ -4,7 +4,7 @@ var newSetPosition = function(top, element){
    */
   var styleSettings = {
     top: top,
-    left: 0
+    left: '10px'
   };
   element.$node.css(styleSettings);
 };
@@ -12,7 +12,7 @@ var newSetPosition = function(top, element){
 var lineUp = function(array){
   var top = 0;
   for (var i = 0; i < array.length; i++){
-    top = top + 50;
+    top = top + 25;
     newSetPosition(top, array[i]);
   }
 };
