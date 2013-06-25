@@ -71,19 +71,27 @@
           if(randomDirection === 3){
             this.style['top'] = top + 100 + 'px';
           }
-          if(randomDirection === 4){
+          if(randomDirection === 4){ß
             this.style['top'] = top - 100 + 'px';
           }
         });
 
         $("body").delegate(".coin", "click", function(){
-            var that = this;
-            console.log(this);
+          var index;
+            for (var i = 0; i < dancers.length; i++){
+              var temp = dancers[i].$node[0];
+              if (this === temp) {
+                //dancer = dancers[i];
+                index = i;
+              }
+            }
             this.style['top'] = parseInt(this.style['top']) - 100 + 'px';
-            setTimeout(function(that) {
-              $(that).hide();
-            }, 2000);
-
+            setTimeout(function(){
+              dancers[index].$node.css('display', 'none');
+              console.log(dancers);
+              dancers.splice(index, 1);
+              console.log(dancers);
+            }, 200);
         });
       });
     </script>
