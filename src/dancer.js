@@ -31,7 +31,7 @@ var makeDancer = function(top, left, timeBetweenSteps){
 };
 
 // Our stuff below
-
+var coinsCollected = 0;
 
 var Dancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');

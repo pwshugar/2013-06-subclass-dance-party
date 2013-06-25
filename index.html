@@ -15,7 +15,9 @@
 
     <div class="topbar">
       <span class="title">object dance party</span>
-      <a href="#" class="lineUpButton" data-dancer-maker-function-name="lineUp">Line Up!</a>
+      <a href="#" class="lineUpButton" data-dancer-maker-function-name="lineUp">Line Up!</a> &nbsp;
+      <a href="#" class="lineUpButton" data-dancer-maker-function-name="pairUp">Pair Up!</a> &nbsp;
+      <span class="lineUpButton">Coins Collected: <span id="coinsCollected"></span></span>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="MarioDancer">add a MarioDancer</a>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="CoinDancer">add a CoinDancer</a>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="Dancer1">add a RainbowTwistDancer</a>
@@ -25,6 +27,7 @@
     <script>
       $(document).ready(function(){
         window.dancers = [];
+        $("#coinsCollected").text(coinsCollected);
 
         $(".addDancerButton").on("click", function(event){
           /* This function sets up the click handlers for the create-dancer
@@ -92,6 +95,8 @@
               dancers.splice(index, 1);
               console.log(dancers);
             }, 200);
+            coinsCollected += 1;
+            $("#coinsCollected").text(coinsCollected);
         });
       });
     </script>
