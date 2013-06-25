@@ -27,6 +27,6 @@ body, a:link, a:visited, a:active{
 }
 #blue{
   border:10px solid blue;
-  border-radius:10px;
+  border-radius:0px;
   position:absolute;
 }

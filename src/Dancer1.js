@@ -54,7 +54,17 @@ Dancer1.prototype.step = function(timeBetweenSteps) {
    // toggle() is a jQuery method to show/hide the <span> tag.
    // * See http://api.jquery.com/category/effects/ for this and
    // * other effects you can use on a jQuery-wrapped html tag. 
-  this.$node.toggle();
+  // this.$node.toggle();
+
+  // if (this.$node.css("border-color") === "rgb(0, 0, 255)") {
+  //   this.$node.css("border-color", "green");
+  // } else {
+  //   this.$node.css("border-color", "blue");
+  // }
+  var randomColor1 = Math.floor(Math.random() * 255);
+  var randomColor2 = Math.floor(Math.random() * 255);
+  var randomColor3 = Math.floor(Math.random() * 255);
+  this.$node.css("border-color", "rgb(" + randomColor1 + ", " + randomColor2 + ", " + randomColor3 + ")");
 };
 
 
