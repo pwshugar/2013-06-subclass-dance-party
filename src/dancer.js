@@ -31,10 +31,6 @@ var makeDancer = function(top, left, timeBetweenSteps){
 };
 
 // Our stuff below
-var dance = function(top, left, timeBetweenSteps) {
-  Dancer.call(this, top, left, timeBetweenSteps);
-  //new Dancer(this, top, left, timeBetweenSteps);
-};
 
 
 var Dancer = function(top, left, timeBetweenSteps) {
@@ -46,7 +42,12 @@ var Dancer = function(top, left, timeBetweenSteps) {
 Dancer.prototype.step = function(timeBetweenSteps){
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
-  setTimeout(this.step, timeBetweenSteps);
+  // this === our dancer
+  // var D = Dancer.prototype;
+  var that = this;
+  setTimeout(function(){
+    that.step(timeBetweenSteps);
+  }, timeBetweenSteps);
 };
 
 Dancer.prototype.setPosition = function(top, left){
